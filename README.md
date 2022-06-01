@@ -1,64 +1,44 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+#Тестовое задание "Парсер бюллетеней"
+___
+##Задача
+___
+Необходимо создать сервис для хранения и подачи объявлений. Объявления должны храниться в базе данных. Сервис должен предоставлять API, работающее поверх HTTP в формате JSON.
+##Решение
+____
+###Набор методов для работы с данными API
+____
++ __/api/V1/bulletins__ - GET метод, который выводит список всех объявлений и номера страниц;
++ __/api/V1/bulletins/{id}__ - GET метод, который выводит конкретное объявление, после указание его __id__;
++ __/api/V1/bulletins__ - POST метод, который добавляет новое объявление;
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+>Принимает такие поля, как:
+>> + title (название объявления);
+>> + price (цена, за товар);
+>> + description (описание товара);
+>> + general_photo(главная фотография товара);
+>> + photos(массив, который принимает в себя до 2х фотографий);
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
++ __/api/V1/bulletins/price/low-high__ - GET метод, который выводит отсортированные объявления по цене(по возрастанию);
++ __/api/V1/bulletins/price/high-low__ - GET метод, который выводит отсортированные объявления по цене(по убыванию);
++ __/api/V1/bulletins/date/low-high__ - GET метод, который выводит отсортированные объявления по дате(по возрастанию);
++ __/api/V1/bulletins/date/high-low__ - GET метод, который выводит отсортированные объявления по дате(по убыванию);
+###Дизайн парсера
+____
+####Страница просмотра бюллетени
+![img.png](readme/img/img.png)
+####Страница просмотра всех бюллетеней(в моем случае я продовал пиджаки)
+![img_1.png](readme/img/img_1.png)
+####Страница добавления объявления
+![img_2.png](readme/img/img_2.png)
+###Сборка Docker
+____
++ nginx
++ mysql
++ php
++ laravel
+##Заключение
+____
+Благодаря этому парсеру вникся чуть чуть в рабочий процесс, в котором есть свои сроки. Я взял достаточный опыт, но некоторые задачи остались для меня затрудненными, поэтому если вы захотите запустить парсер на ___docker-compose up -d___
+, то да, у вас это получится но, ajax с ним не работает. Было принято решение перенести проект на OpenServer и на нём закончить сайт.
+Если это заключение всё ещё висит, значит я не нашел решение данной проблемы, если оно у вас есть, то буду очень признателен. Во всём остальном работай
+сам доволен и опыт бесценен. Буду идти дальше!
